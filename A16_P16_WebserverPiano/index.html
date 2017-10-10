@@ -1,0 +1,33 @@
+<HTML><HEAD>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<title>
+NanoESP Piano
+</title>
+</HEAD>
+<BODY bgcolor="#FFFF99" text="#000000">
+<h1>NanoESP Piano</h1>
+<HR>
+Play your Song:
+<br><br>
+	<button onclick="return sendForm(262);">C (4)</button>
+	<button onclick="return sendForm(294);">D (4) </button>
+	<button onclick="return sendForm(330);">E (4) </button>
+	<button onclick="return sendForm(349);">F (4) </button>
+	<button onclick="return sendForm(392);">G (4) </button>
+	<button onclick="return sendForm(440);">A (4) </button>
+	<button onclick="return sendForm(494);">B (4) </button>
+	<button onclick="return sendForm(523);">C (5) </button>
+<br>
+<HR><BR>
+<script language="JavaScript">
+function sendForm(value) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', "/dataonly", true);
+
+  xhr.send("tone="+value);
+  return false; // Prevent page from submitting.
+}
+</script>
+
+</body>
+</HTML>

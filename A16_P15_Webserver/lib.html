@@ -1,0 +1,59 @@
+<HTML><HEAD>
+<title>
+NanoESP Lib
+</title>
+</HEAD>
+<BODY bgcolor="#FFFF99" text="#000000">
+<h1>NanoESP Library Infos</h1>
+<HR>
+<h3>Defines and functions</h3>
+
+<p>#define STATION 1<br>
+ #define ACCESSPOINT 2<br>
+ #define DUAL 3<br>
+ #define TCP TCP<br>
+ #define UDP UDP<br>
+ NanoESP() ;<br>
+ boolean init();<br>
+ boolean sendCom(String command, char respond[]);<br>
+ String sendCom(String command);<br>
+ boolean setMultipleConnections();<br>
+ boolean setTransferMode() ;<br>
+ boolean reset();</p>
+ 
+ <p>boolean configWifi(int modus, String ssid, String password);<br>
+ boolean configWifiMode(int modus);<br>
+ boolean configWifiStation(String ssid, String password);<br>
+ boolean configWifiAP(String ssid, String password);<br>
+ boolean configWifiAP(String ssid, String password, int channel, int crypt);<br>
+ boolean disconnectWifi();<br>
+ String getIp();</p>
+ 
+<p>boolean newConnection(int id, String type, String ip , int port);<br>
+ boolean closeConnection(int id) ;<br>
+ boolean startUdpServer(int id, String ip , int port, int recvport, int mode=0);<br>
+ boolean endUdpServer(int id);<br>
+ boolean startTcpServer(int port) ;<br>
+ boolean endTcpServer();<br>
+ boolean sendData(int id, String msg);<br>
+ boolean sendDataClose(int id, String msg);<br>
+ int getId();<br>
+ boolean ping(String adress);</p>
+ 
+ bool sendFromFlash(int client, const char *website, int len);<br>
+ bool recvRequest(int &id, String &method, String &ressource, String &parameter);<br>
+ bool sendStreamHeader(int connectionId);		<br>
+ String sendRequest(int id, String method, String address, String parameter);<br>
+ String sendRequest(int id, String method, String address); 	<br>
+<br>	
+
+void serialDebug();<br><br>
+
+<a href="/">Main Page</a><br>
+<a href="/pinout">Pinlayout NanoESP</a><br>
+<HR><BR>
+<img src="http://iot.fkainka.de/wp-content/uploads/2015/09/cropped-xBoard.png">
+</body>
+</HTML>
+
+

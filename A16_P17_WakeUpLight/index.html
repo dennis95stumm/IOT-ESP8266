@@ -1,0 +1,42 @@
+<HTML><HEAD>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<meta name="viewport" content="width=device-width, initial-scale=2.0, user-scalable=yes">
+<tilte><h1>NanoESP WakeUp Light</h1></tilte>
+</HEAD>
+<BODY bgcolor="#FFFF99">
+<HR>
+Set up your WakeUp Timer
+<BR><BR>
+
+<form action="/settimer">
+<table>
+	<tr><td>Time: </td><td><input type="time" name="timer"></td></tr>
+	<tr><td>Duration:</td><td><input type="number" name="duration" min="1" max="60" step="1" value="30"> min</td></tr>
+	<tr></tr>
+	<tr><td></td><td><input type="submit" onclick="return sendForm(this.form);"></td></tr>
+</table>
+</form>
+<form action="/turnoff">
+	<button type="submit" name="led" value="0" onclick="return sendForm(this.form);">Turn LED OFF</button>
+</form>
+<HR>
+<script language="JavaScript">
+function sendForm(form) {
+  var formData ="";
+  	for (var i = 0, d, v; i < form.elements.length; i++) {
+		d = form.elements[i];
+		if (d.name && d.value) {
+			v = (d.type == "checkbox" || d.type == "radio" ? (d.checked ? d.value : "") : d.value);
+			if (v) formData += d.name + "=" + escape(v) + "&";
+		}
+	}
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', form.action, true);
+  xhr.send(formData);
+  return false;
+}
+
+</script>
+
+</BODY>
+</HTML>

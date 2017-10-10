@@ -1,0 +1,42 @@
+<HTML><HEAD>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<meta name="viewport" content="width=device-width, initial-scale=2.0, user-scalable=yes">
+<tilte><h1>NanoESP RGB</h1></tilte>
+</HEAD>
+<BODY bgcolor="#FFFF99">
+<HR>
+
+Change the Color<BR>
+of the RGB-LED
+<BR><BR>
+<form action="/setcolor">
+	<input type="color" id= "rgb" name="rgb" onchange="return sendForm(this.form);"><BR>
+</form>
+<HR>
+<a href="/config">Config Menu</a><br>
+<HR>
+</font>
+<textarea id="msg" name="message" rows="5" cols="40">
+
+</textarea>
+
+<script language="JavaScript">
+function sendForm(form) {
+  var formData ="";
+  	for (var i = 0, d, v; i < form.elements.length; i++) {
+		d = form.elements[i];
+		if (d.name && d.value) {
+			v = (d.type == "checkbox" || d.type == "radio" ? (d.checked ? d.value : "") : d.value);
+			if (v) formData += d.name + "=" + escape(v) + "&";
+		}
+	}
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', form.action, true);
+  xhr.send(formData);
+  return false;
+}
+
+</script>
+
+</BODY>
+</HTML>

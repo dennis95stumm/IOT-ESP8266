@@ -1,0 +1,48 @@
+<HTML><HEAD>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<meta name="viewport" content="width=device-width, initial-scale=2.0, user-scalable=yes">
+<tilte><h1>NanoESP CLimate</h1></tilte>
+</HEAD>
+<BODY bgcolor="#FFFF99">
+<HR>
+Current climate values from NanoESP:
+<BR><BR>
+
+Tempertur:<BR>
+<meter id="temp" name="temp" min = "-20" max="60" value="0"></meter><output id="otemp"></output><BR>
+Humidity:<BR>
+<meter id="hum" name="hum" min="0" max="100" value="0"></meter><output id="ohum"></output><BR>
+Light:<BR>
+<meter id="light" name="light" max="1023" value="0"></meter><output id="olight"></output><BR>
+
+<HR>
+</font>
+<textarea id="msg" name="message" rows="5" cols="40">
+
+</textarea>
+
+<script language="JavaScript">
+var source = new EventSource("/eventclimate");
+
+source.addEventListener('temp', function(e) {
+  document.getElementById("temp").value = e.data;
+  document.getElementById("otemp").value = e.data +" C";
+}, false);
+
+source.addEventListener('light', function(e) {
+  document.getElementById("light").value = e.data;
+  document.getElementById("olight").value = e.data;
+}, false);
+source.addEventListener('hum', function(e) {
+  document.getElementById("hum").value = e.data;
+  document.getElementById("ohum").value = e.data+" %";
+}, false);
+
+
+source.addEventListener('msg', function(e) {
+	document.getElementById('msg').value += e.data;
+}, false);
+</script>
+
+</BODY>
+</HTML>
